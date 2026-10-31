@@ -12,8 +12,14 @@ Prototipo estático para registrar movimientos y explorar una previsión de gast
 ## Datos y privacidad
 
 - El sitio es público y el código del repositorio también será público.
-- Los movimientos y gastos previstos se guardan en `localStorage` del navegador. No se envían a GitHub ni se sincronizan entre computadora y celular.
-- No cargar datos personales en archivos del repositorio. Cada dispositivo tendrá su propia copia local de los datos.
-- Borrar los datos del navegador puede eliminar esa copia.
+- La conexión a Supabase usa una clave publicable. Las tablas tienen Row Level Security y cada usuario solo puede consultar y modificar sus propios datos.
+- Creá una cuenta desde **Conectar cuenta**. Al iniciar sesión desde el celular o la computadora, los movimientos, ingresos, gastos previstos y disponible de previsión se sincronizan.
+- Si tu navegador ya tiene datos guardados y la cuenta está vacía, Clara pregunta antes de copiarlos. Los datos ficticios de muestra no se copian.
+- Si no iniciás sesión, los datos nuevos siguen guardándose solo en ese navegador.
+- Usá una contraseña única y no guardes claves privadas de Supabase en este repositorio. La clave `service_role` nunca debe estar en el navegador.
+
+### Configuración de Supabase
+
+El esquema está en `supabase-schema.sql`. Las tablas son `finance_movements`, `finance_plans` y `finance_preferences`; la app se conecta al proyecto Clara Finanzas.
 
 Los importes y movimientos iniciales son datos ficticios de muestra.
